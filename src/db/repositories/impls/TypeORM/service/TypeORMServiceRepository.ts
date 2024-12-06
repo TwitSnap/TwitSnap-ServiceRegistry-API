@@ -42,4 +42,17 @@ export class TypeORMServiceRepository extends TypeORMRepository<Service> impleme
             throw new StandardDatabaseError(error.message);
         }
     }
+
+    /**
+     * @inheritDoc
+     */
+    public findOneByApiKey = async (apiKey: string): Promise<Service | null> => {
+        try {
+            return await this.typeOrmRepository.createQueryBuilder("service")
+            .where("service.api_key = :apiKey", { apiKey })
+            .getOne();
+        } catch (error: any) {
+            throw new StandardDatabaseError(error.message);
+        }
+    }
 }

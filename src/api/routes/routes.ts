@@ -7,6 +7,7 @@ router.post("/v1/service", serviceController.createService);
 router.get("/v1/service", serviceController.getServices);
 router.get("/v1/service/:id", serviceController.getService);
 router.patch("/v1/service/:id/status", serviceController.changeServiceStatus);
+router.get("/v1/service/api-key/:apiKey", serviceController.validateApiKey);
 
 
 export default router;

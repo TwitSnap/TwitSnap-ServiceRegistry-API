@@ -23,4 +23,12 @@ export interface ServiceRepository {
      * @returns A promise that resolves to an array of `Service` entities.
      */
     getAll: () => Promise<Service[]>;
+
+    /**
+     * Retrieves a `Service` entity by its API key.
+     *
+     * @param apiKey - The API key of the Service.
+     * @returns A promise that resolves to the `Service` entity if found, or `null` if not found.
+     */
+    findOneByApiKey: (apiKey: string) => Promise<Service | null>;
 }

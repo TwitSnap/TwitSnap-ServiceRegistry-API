@@ -32,6 +32,11 @@ export class ServiceService{
         return service;
     }
 
+    public validateApiKey = async (apiKey: string): Promise<boolean> => {
+        const service = await this.serviceRepository.findOneByApiKey(apiKey);
+        return service !== null;
+    }
+
     public changeServiceStatus = async (id: string, status: string): Promise<void> => {
         switch (status) {
             case "BLOCKED":

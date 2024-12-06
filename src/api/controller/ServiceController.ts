@@ -84,4 +84,22 @@ export class ServiceController extends Controller{
             next(error);
         }
     }
+
+    /**
+     * Validates the API key of a service.
+     *
+     * @param req - The request object containing the API key.
+     * @param res - The response object to send.
+     * @param next - The next function for error handling.
+     */
+    public validateApiKey = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const apiKey = this.getParamOrBadRequestError(req, 'apiKey') as string;
+
+            const isValid = await this.serviceService.validateApiKey(apiKey);
+            return this.okResponse(res, {isValid});
+        } catch (error) {
+            next(error);
+        }
+    }
 }
