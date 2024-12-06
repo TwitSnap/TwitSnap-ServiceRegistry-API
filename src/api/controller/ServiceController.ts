@@ -25,8 +25,8 @@ export class ServiceController extends Controller{
             const name = this.getFieldOrBadRequestError(req, 'name') as string;
             const description = this.getFieldOrBadRequestError(req, 'description') as string;
 
-            await this.serviceService.createService(name, description);
-            return this.createdResponse(res, {message: 'Service registered successfully.'});
+            const service = await this.serviceService.createService(name, description);
+            return this.createdResponse(res, service);
         } catch (error) {
             next(error);
         }

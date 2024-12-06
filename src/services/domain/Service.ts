@@ -8,22 +8,22 @@ export enum ServiceStatus {
 
 export class Service{
     @PrimaryColumn("uuid", { default: () => "uuid_generate_v4()" })
-    private readonly id: string;
+    public readonly id: string;
 
     @Column({ nullable: false })
-    private name: string;
+    public name: string;
 
     @Column({ nullable: false })
-    private description: string;
+    public description: string;
 
     @Column({ nullable: false })
-    private creationDate: Date;
+    public creationDate: Date;
 
     @Column({ nullable: false })
-    private status: ServiceStatus;
+    public status: ServiceStatus;
 
     @Column({ nullable: false })
-    private apiKey: string;
+    public apiKey: string;
 
 
     constructor(name: string, description: string) {
@@ -40,5 +40,9 @@ export class Service{
 
     public activate(): void {
         this.status = ServiceStatus.ACTIVE;
+    }
+
+    public isActive(): boolean {
+        return this.status === ServiceStatus.ACTIVE;
     }
 }

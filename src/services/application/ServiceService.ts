@@ -34,7 +34,7 @@ export class ServiceService{
 
     public validateApiKey = async (apiKey: string): Promise<boolean> => {
         const service = await this.serviceRepository.findOneByApiKey(apiKey);
-        return service !== null;
+        return !(service === null || !service.isActive());
     }
 
     public changeServiceStatus = async (id: string, status: string): Promise<void> => {
