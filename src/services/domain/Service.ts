@@ -1,4 +1,4 @@
-import {Column, PrimaryColumn} from "typeorm";
+import {Column, Entity, PrimaryColumn} from "typeorm";
 import {Helpers} from "../../utils/helpers";
 
 export enum ServiceStatus {
@@ -6,6 +6,7 @@ export enum ServiceStatus {
     BLOCKED = "BLOCKED"
 }
 
+@Entity()
 export class Service{
     @PrimaryColumn("uuid", { default: () => "uuid_generate_v4()" })
     public readonly id: string;
