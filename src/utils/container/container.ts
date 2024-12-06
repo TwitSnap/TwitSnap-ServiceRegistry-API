@@ -11,6 +11,7 @@ import {DataSource} from "typeorm";
 import {LOGGING, LOG_DEBUG, LOG_ERROR, LOG_INFO} from "../config";
 import {ServiceController} from "../../api/controller/ServiceController";
 import {TypeORMServiceRepository} from "../../db/repositories/impls/TypeORM/service/TypeORMServiceRepository";
+import {ServiceService} from "../../services/application/ServiceService";
 
 // ? Register all dependencies
 container.register<LoggingStrategy>("LoggingStrategy", { useClass: WinstonLoggerStrategy});
@@ -27,3 +28,4 @@ container.register<ServiceRepository>("ServiceRepository", TypeORMServiceReposit
 export const logger = container.resolve(Logger);
 export const databaseConnector = container.resolve(DatabaseConnector<DataSource, DataSource>);
 export const serviceController = container.resolve(ServiceController);
+export const serviceService = container.resolve(ServiceService);

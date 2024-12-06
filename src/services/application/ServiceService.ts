@@ -1,13 +1,13 @@
 import {Service} from "../domain/Service";
 import {StatusNotFoundError} from "./errors/StatusNotFoundError";
 import {ServiceRepository} from "../../db/repositories/interfaces/ServiceRepository";
-import {injectable} from "tsyringe";
+import {inject, injectable} from "tsyringe";
 
 @injectable()
 export class ServiceService{
     serviceRepository: ServiceRepository;
 
-    constructor(serviceRepository: ServiceRepository) {
+    constructor(@inject("ServiceRepository") serviceRepository: ServiceRepository) {
         this.serviceRepository = serviceRepository;
     }
 

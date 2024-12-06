@@ -2,7 +2,9 @@ import {Controller} from "./Controller";
 import {ServiceService} from "../../services/application/ServiceService";
 import {HttpResponseSender} from "./HttpResponseSender";
 import {NextFunction, Request, Response} from "express";
+import {injectable} from "tsyringe";
 
+@injectable()
 export class ServiceController extends Controller{
     private serviceService: ServiceService;
 
