@@ -18,21 +18,21 @@ export class Service{
     public description: string;
 
     @Column({ nullable: false })
-    public creationDate: Date;
+    public creation_date: Date;
 
     @Column({ nullable: false })
     public status: ServiceStatus;
 
     @Column({ nullable: false })
-    public apiKey: string;
+    public api_key: string;
 
 
     constructor(name: string, description: string) {
         this.name = name;
         this.description = description;
-        this.creationDate = new Date();
+        this.creation_date = new Date();
         this.status = ServiceStatus.ACTIVE;
-        this.apiKey = Helpers.getSecureApiKey(32);
+        this.api_key = Helpers.getSecureApiKey(32);
     }
 
     public block(): void {
